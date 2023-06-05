@@ -7,75 +7,94 @@ const Dashboard: FC = () => {
   return (
     <Box
       sx={{
-        position: "relative",
-        background: "url(/images/background-update.svg)",
-        // backgroundSize: { md: "100% auto", sm: "auto 100%", xs: "auto 100%" },
-        backgroundSize: 'cover',
-        backgroundRepeat: "no-repeat",
-        pt: 12,
-        pb: 24,
+        position: 'relative'
       }}
     >
       <Box
-        maxWidth={1280}
-        position="relative"
-        mx="auto"
-        px={{ md: 13.5, sm: 2, xs: 2 }}
-        zIndex={1}
-      >
-        <Box>
-          <Stack
-            flexDirection={{ sm: "row", xs: "column" }}
-            justifyContent="space-between"
-          >
-            <Box>
-              <Box
-                src="/images/logo.png"
-                component="img"
-                sx={{ position: "relative", left: -20 }}
-              />
-            </Box>
-            <Box py={{ sm: 3, xs: 2 }}>
-              <Button variant="contained" color="success" onClick={login}>
-                Connect Wallet
-              </Button>
-            </Box>
-          </Stack>
-          <Typography
-            maxWidth={540}
-            sx={{
-              fontSize: { md: 52, sm: 48, xs: 40 },
-              fontFamily: 'Nugie Romantic',
-              fontWeight: 400,
-              textTransform: 'capitalize',
-              lineHeight: { md: '52px', sm: '48px', xs: '40px' },
-              textShadow: "0px 4px 4px rgba(0,0,0,0.25)",
-              pb: 2,
-            }}
-          >
-            Sail the High Seas of Crypto with Pirate Pepe
-          </Typography>
-          <Typography 
-            variant="subtitle1" 
-            fontWeight={400} 
-            lineHeight={1.15} 
-            maxWidth={576}
-          >
-            Enjoy lifetime access to all the premium content published by the
-            industry’s top research products including:
-          </Typography>
-        </Box>
-      </Box>
-      <Box
-        height={331}
-        position="absolute"
-        bottom={0}
-        width="100%"
+        component="img"
+        src="/images/background-update.svg"
         sx={{
-          background:
-            "linear-gradient(180deg, rgba(0, 9, 0, 0) 0%, #000900 100%)",
+          width: '100%',
+          visibility: 'hidden',
+          display: { md: 'block', xs: 'none' }
         }}
       ></Box>
+      <Box
+        sx={{
+          position: { md: "absolute", xs: 'relative' },
+          left: 0,
+          top: 0,
+          width: '100%',
+          height: '100%',
+          background: "url(/images/background-update.svg)",
+          backgroundPosition: 'top right',
+          backgroundSize: 'cover',
+          backgroundRepeat: "no-repeat",
+          pt: { xs: 8, lg: 12 },
+          pb: 24,
+        }}
+      >
+        <Box
+          maxWidth={1280}
+          position="relative"
+          mx="auto"
+          px={{ md: 13.5, sm: 2, xs: 2 }}
+          zIndex={1}
+        >
+          <Box>
+            <Stack
+              flexDirection={{ sm: "row", xs: "column" }}
+              justifyContent="space-between"
+            >
+              <Box>
+                <Box
+                  src="/images/logo.png"
+                  component="img"
+                  sx={{ position: "relative", left: -20 }}
+                />
+              </Box>
+              <Box py={{ sm: 3, xs: 2 }}>
+                <Button variant="contained" color="success" onClick={login}>
+                  Connect Wallet
+                </Button>
+              </Box>
+            </Stack>
+            <Typography
+              maxWidth={540}
+              sx={{
+                fontSize: { md: 52, sm: 48, xs: 40 },
+                fontFamily: 'Nugie Romantic',
+                fontWeight: 400,
+                textTransform: 'capitalize',
+                lineHeight: { md: '52px', sm: '48px', xs: '40px' },
+                textShadow: "0px 4px 4px rgba(0,0,0,0.25)",
+                pb: 2,
+              }}
+            >
+              Sail the High Seas of Crypto with Pirate Pepe
+            </Typography>
+            <Typography 
+              variant="subtitle1" 
+              fontWeight={400} 
+              lineHeight={1.15} 
+              maxWidth={576}
+            >
+              Enjoy lifetime access to all the premium content published by the
+              industry’s top research products including:
+            </Typography>
+          </Box>
+        </Box>
+        <Box
+          height={331}
+          position="absolute"
+          bottom={0}
+          width="100%"
+          sx={{
+            background:
+              "linear-gradient(180deg, rgba(0, 9, 0, 0) 0%, #000900 100%)",
+          }}
+        ></Box>
+      </Box>
     </Box>
   );
 };
