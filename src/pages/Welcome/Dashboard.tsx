@@ -36,19 +36,19 @@ const Dashboard: FC = () => {
               />
             </Box>
             <Box py={{ sm: 3, xs: 2 }}>
-              <Button variant="contained" onClick={login}>
-                Login
+              <Button variant="contained" color="success" onClick={login}>
+                Connect Wallet
               </Button>
             </Box>
           </Stack>
           <Typography
             maxWidth={540}
             sx={{
-              fontSize: { md: 52 },
+              fontSize: { md: 52, sm: 48, xs: 40 },
               fontFamily: 'Nugie Romantic',
               fontWeight: 400,
               textTransform: 'capitalize',
-              lineHeight: { md: '52px' },
+              lineHeight: { md: '52px', sm: '48px', xs: '40px' },
               textShadow: "0px 4px 4px rgba(0,0,0,0.25)",
               pb: 2,
             }}

@@ -5,9 +5,15 @@ const Subscribe = () => {
     return (
         <Box
             sx={{
-               display: 'grid',
-               gridTemplateColumns: 'repeat(2, 1fr)', 
-               gap: 2,
+                display: 'grid',
+                gridTemplateColumns: { 
+                    lg: 'repeat(2, 1fr)', 
+                    md: 'repeat(2, 1fr)', 
+                    sm: 'repeat(1, 1fr)', 
+                    xs: 'repeat(1, 1fr)'
+                }, 
+                gridTemplateRows: "repeat(1, 1fr)",
+                gap: 2,
             }}
         >
             <Box 
@@ -18,7 +24,7 @@ const Subscribe = () => {
             >
                 <Box 
                     sx={{
-                        p: 4
+                        p: { sm: 4, xs: 2 }
                     }}
                 >
                     <Typography 
@@ -28,7 +34,7 @@ const Subscribe = () => {
                     <Box 
                         sx={{ 
                             display: 'grid', 
-                            gridTemplateColumns: 'repeat(2, 1fr)',
+                            gridTemplateColumns: { sm: 'repeat(2, 1fr)', xs: 'repeat(1, 1fr)' },
                             py: 4,
                             gap: 1.5
                         }}
@@ -130,23 +136,34 @@ const Subscribe = () => {
                                 bgcolor: '#00F283',
                                 textTransform: 'uppercase',
                                 boxShadow: "0px 2px 6px rgba(228, 33, 33, 0.6)",
-                                px: 10
+                                px: { sm: 10, xs: 0 },
+                                width: { xs: '100%', sm: 'unset' }
                             }}
                         >Join Now</Button>
                     </Stack>
                 </Box>
             </Box>
             <Stack 
-                flexDirection="row"
-                alignItems='center'
-                justifyContent='center'
                 sx={{
+                    position: 'relative',
+                    pt: { sm: '80%', xs: '100%', md: 0 },
                     backgroundImage: 'url(/images/present.png)',
                     backgroundSize: '100% 100%',
                     backgroundColor: '#B40400',
                     borderRadius: 1.25
                 }}>
-                <Stack>
+                <Stack 
+                    alignItems='center'
+                    justifyContent='center'
+                    sx={{ 
+                        top: 0,
+                        left: 0,
+                        position: 'absolute', 
+                        width: '100%', 
+                        height: '100%',
+                        px: 2,
+                    }}
+                >
                     <Box />
                     <Typography 
                         variant="h3" 
@@ -157,9 +174,9 @@ const Subscribe = () => {
                     >Current Subscriber Count</Typography>
                     <Typography 
                         sx={{ 
-                            fontSize: '56px !important',
                             fontWeight: 700,
-                            textAlign: 'center' 
+                            textAlign: 'center',
+                            fontSize: { md: 52, sm: 48, xs: 40 },
                         }}
                     >236</Typography>
                     <Typography 

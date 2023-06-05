@@ -13,7 +13,7 @@ const Payment = () => {
                 justifyContent="center" 
                 alignItems="center"
             >
-                <Box src="/images/logo-bottom.svg" component="img" />
+                <Box src="/images/logo-bottom.svg" sx={{ maxWidth: '100%' }} component="img" />
                 <Typography 
                     variant="h1" 
                     sx={{ 
@@ -25,7 +25,7 @@ const Payment = () => {
                 <Typography 
                     sx={{ 
                         pt: 3,
-                        fontSize: '58px !important',
+                        fontSize: { md: 52, sm: 48, xs: 40 },
                         fontWeight: 700,
                         textAlign: 'center', 
                         color: "#FFD53E"
@@ -44,8 +44,9 @@ const Payment = () => {
                     color='warning'
                     sx={{
                         bgcolor: '#FFD53E',
-                        px: 10,
-                        py: 3
+                        py: 3,
+                        px: { sm: 10, xs: 0 },
+                        width: { xs: '100%', sm: 'unset' }
                     }}
                 >
                     <Typography 
