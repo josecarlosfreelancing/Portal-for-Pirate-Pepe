@@ -78,7 +78,7 @@ const AuthProvider: FC<any> = ({ children }: any) => {
 
   React.useEffect(() => {
     if (!account) {
-      activateWeb3();
+      // activateWeb3();
     } else if (!user?.account) {
       loadUser();
     }
