@@ -1,6 +1,8 @@
 import React from 'react';
-import { Stack, Typography, Box, Button, Modal } from '@mui/material';
+import { Chip, Stack, Typography, Box, Button, Modal } from '@mui/material';
 import ContentCopyRoundedIcon from "@mui/icons-material/ContentCopyRounded";
+import DoneIcon from '@mui/icons-material/Done';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -15,7 +17,12 @@ const style = {
 };
   
 const Confirm = ({ open, handleClose }: any) => {
-
+    const walletAddress = "0xFF 0x01 0x04 0x42 0x61 0x73 0x73"
+    const [copied, setCopied] = React.useState(false);
+    const onCopied = () => {
+        setCopied(true)
+        setTimeout(() => setCopied(false), 3000)
+    }
     return (
         <Modal
             open={open}
@@ -30,15 +37,26 @@ const Confirm = ({ open, handleClose }: any) => {
                     </Typography>
                     <Box component="img" src="/images/QR.png" maxWidth="100%" />
                     <Typography textAlign="center" variant="h4" pb={2} pt={3}>
-                        0xFF 0x01 0x04 0x42 0x61 0x73 0x73
+                        {walletAddress}
                     </Typography>
-                    <Button
-                        variant="contained"
-                        color="success"
-                        endIcon={<ContentCopyRoundedIcon fontSize="small" />}
-                    >
-                        Copy Address
-                    </Button>
+                    <Stack flexDirection="row" alignItems="center" justifyContent="ceonter" gap={2}>
+                        <CopyToClipboard text={walletAddress} onCopy={onCopied}>
+                            <Button
+                                variant="contained"
+                                color="success"
+                                endIcon={<ContentCopyRoundedIcon fontSize="small" />}
+                            >
+                                Copy Address
+                            </Button>
+                        </CopyToClipboard>
+                        {copied ?
+                            <Chip
+                                label="Copied"
+                                avatar={<DoneIcon />}
+                            />
+                        :   <></>
+                        }
+                    </Stack>
                     <Typography textAlign="center" variant="body2" pt={3}>
                         The wallet you send payment from will be White Listed. <br />
                         Connect Wallet to Access Content Portal for Life.
