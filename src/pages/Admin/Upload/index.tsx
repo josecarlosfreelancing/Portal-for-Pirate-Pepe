@@ -9,7 +9,7 @@ import {
   Button,
   Typography,
 } from "@mui/material";
-import CategorySelect from "./CategorySelect";
+// import CategorySelect from "./CategorySelect";
 import ImgPiece from "./ImagePiece";
 import { AddPhotoAlternate, CloudDownload } from "@mui/icons-material";
 import { toast } from "react-hot-toast";
@@ -263,7 +263,7 @@ const Upload: FC = () => {
             required
             disabled={loading}
           />
-          <CategorySelect onChange={onChangeCategory} value={category} />
+          {/* <CategorySelect onChange={onChangeCategory} value={category} /> */}
         </Stack>
 
         <fieldset style={{ borderColor: "#3b423b", borderRadius: 4 }}>

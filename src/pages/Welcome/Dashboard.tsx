@@ -8,9 +8,10 @@ const Dashboard: FC = () => {
     <Box
       sx={{
         position: "relative",
-        background: "url(/images/background.svg)",
-        backgroundSize: { md: "100% auto", sm: "auto 100%", xs: "auto 100%" },
-        backgroundRepeat: "none",
+        background: "url(/images/background-update.svg)",
+        // backgroundSize: { md: "100% auto", sm: "auto 100%", xs: "auto 100%" },
+        backgroundSize: 'cover',
+        backgroundRepeat: "no-repeat",
         pt: 12,
         pb: 24,
       }}
@@ -41,17 +42,25 @@ const Dashboard: FC = () => {
             </Box>
           </Stack>
           <Typography
-            variant="h1"
-            maxWidth={360}
+            maxWidth={540}
             sx={{
-              textTransform: "uppercase",
+              fontSize: { md: 52 },
+              fontFamily: 'Nugie Romantic',
+              fontWeight: 400,
+              textTransform: 'capitalize',
+              lineHeight: { md: '52px' },
               textShadow: "0px 4px 4px rgba(0,0,0,0.25)",
               pb: 2,
             }}
           >
             Sail the High Seas of Crypto with Pirate Pepe
           </Typography>
-          <Typography color="warning.main" maxWidth={435}>
+          <Typography 
+            variant="subtitle1" 
+            fontWeight={400} 
+            lineHeight={1.15} 
+            maxWidth={576}
+          >
             Enjoy lifetime access to all the premium content published by the
             industry’s top research products including:
           </Typography>

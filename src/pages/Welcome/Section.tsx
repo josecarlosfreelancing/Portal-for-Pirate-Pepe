@@ -32,7 +32,7 @@ const Section: FC<SectionType> = (props) => {
           <Typography
             sx={{ "& a": { textDecoration: "none", color: props.color } }}
           >
-            <Link to={props.href}>Explore More</Link>
+            <Link to={props.href}>Subscribe Now</Link>
           </Typography>
           <ArrowForwardIcon fontSize="small" sx={{ color: props.color }} />
         </Stack>

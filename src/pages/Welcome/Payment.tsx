@@ -1,30 +1,63 @@
-import React, { FC } from "react";
-import { Box, Button, Typography, Stack } from "@mui/material";
-import ContentCopyRoundedIcon from "@mui/icons-material/ContentCopyRounded";
+import React from 'react';
+import { Box, Button, Stack, Typography } from '@mui/material';
 
-const Payment: FC = () => {
-  return (
-    <Stack alignItems="center" justifyContent="center" pt={8} pb={22}>
-      <Typography textAlign="center" variant="subtitle1" pb={3}>
-        Send payments to the following wallet:
-      </Typography>
-      <Box component="img" src="/images/QR.png" maxWidth="100%" />
-      <Typography textAlign="center" variant="h4" pb={2} pt={3}>
-        0xFF 0x01 0x04 0x42 0x61 0x73 0x73
-      </Typography>
-      <Button
-        variant="contained"
-        color="success"
-        endIcon={<ContentCopyRoundedIcon fontSize="small" />}
-      >
-        Copy Address
-      </Button>
-      <Typography textAlign="center" variant="body2" pt={3}>
-        The wallet you send payment from will be White Listed. <br />
-        Connect Wallet to Access Content Portal for Life.
-      </Typography>
-    </Stack>
-  );
-};
+const Payment = () => {
+    return (
+        <Box 
+            sx={{
+                py: 5,
+                pb: 9
+            }}
+        >
+            <Stack 
+                justifyContent="center" 
+                alignItems="center"
+            >
+                <Box src="/images/logo-bottom.svg" component="img" />
+                <Typography 
+                    variant="h1" 
+                    sx={{ 
+                        pt: 2,
+                        fontWeight: 500, 
+                        textAlign: 'center' 
+                    }}
+                >Pirate Pepe Will Launch After First</Typography>
+                <Typography 
+                    sx={{ 
+                        pt: 3,
+                        fontSize: '58px !important',
+                        fontWeight: 700,
+                        textAlign: 'center', 
+                        color: "#FFD53E"
+                    }}
+                >1,000</Typography>
+                <Typography 
+                    variant="subtitle1"
+                    sx={{ 
+                        pt: 2,
+                        pb: 3,
+                        textAlign: 'center' 
+                    }}
+                >Subscribers</Typography>
+                <Button
+                    variant="contained"
+                    color='warning'
+                    sx={{
+                        bgcolor: '#FFD53E',
+                        px: 10,
+                        py: 3
+                    }}
+                >
+                    <Typography 
+                        variant="subtitle1"
+                        sx={{ 
+                            textTransform: 'uppercase' 
+                        }}
+                    >Join Now</Typography>
+                </Button>
+            </Stack>
+        </Box>
+    )
+}
 
 export default Payment;
