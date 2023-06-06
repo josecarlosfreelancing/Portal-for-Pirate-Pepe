@@ -7,20 +7,25 @@ import { sections } from "./constant";
 import { SectionType } from "./type";
 import Subscribe from "./Subscribe";
 import Pirate from "./Pirate";
+import Confirm from "../../components/Confirm";
 
 const Welcome: FC = () => {
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   return (
     <Box>
       <Dashboard />
       <Box
-        maxWidth={1280}
+        maxWidth={{ md: 1280, lg: '70vw' }}
         position="relative"
         mx="auto"
         px={{ md: 13.5, sm: 2, xs: 2 }}
       >
         <Stack gap={8} py={8}>
-          {sections.map((section: SectionType, key: number) => (
-            <Section {...section} key={key} />
+          {sections.map((section: any, key: number) => (
+            <Section {...section} handleOpen={handleOpen} open={open} key={key} />
           ))}
         </Stack>
         <Stack
@@ -41,8 +46,12 @@ const Welcome: FC = () => {
           <Box component="img" src="/images/logo.png" />
         </Stack>
         <Pirate />
-        <Subscribe />
-        <Payment />
+        <Subscribe handleOpen={handleOpen} />
+        <Payment handleOpen={handleOpen} />
+        <Confirm 
+          open={open}
+          handleClose={handleClose}
+        />
       </Box>
     </Box>
   );

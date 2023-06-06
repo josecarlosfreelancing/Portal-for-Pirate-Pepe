@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, Stack, Typography } from '@mui/material';
 
-const Payment = () => {
+const Payment = (props: any) => {
     return (
         <Box 
             sx={{
@@ -48,6 +48,7 @@ const Payment = () => {
                         px: { sm: 10, xs: 0 },
                         width: { xs: '100%', sm: 'unset' }
                     }}
+                    onClick={props.handleOpen}
                 >
                     <Typography 
                         variant="subtitle1"

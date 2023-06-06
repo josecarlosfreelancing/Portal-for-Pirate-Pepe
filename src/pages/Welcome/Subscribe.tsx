@@ -1,7 +1,7 @@
 import React from 'react';
 import { Box, Button, Stack, Typography } from '@mui/material';
 
-const Subscribe = () => {
+const Subscribe = (props : any) => {
     return (
         <Box
             sx={{
@@ -139,6 +139,7 @@ const Subscribe = () => {
                                 px: { sm: 10, xs: 0 },
                                 width: { xs: '100%', sm: 'unset' }
                             }}
+                            onClick={props.handleOpen}
                         >Join Now</Button>
                     </Stack>
                 </Box>
@@ -184,7 +185,7 @@ const Subscribe = () => {
                             textAlign: 'center',
                             fontWeight: 400
                         }}
-                    >Price Increases Aftr 764 more subscribers</Typography>
+                    >Price Increases After 764 more subscribers</Typography>
                     <Box />
                 </Stack>
             </Stack>

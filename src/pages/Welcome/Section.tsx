@@ -3,12 +3,8 @@ import { Stack, Box, Typography } from "@mui/material";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { Link } from "react-router-dom";
 import { SectionType } from "./type";
-import Confirm from "../../components/Confirm";
 
 const Section: FC<SectionType> = (props) => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
 
   return (
     <Stack
@@ -41,7 +37,7 @@ const Section: FC<SectionType> = (props) => {
             cursor: 'pointer',
             pt: 5
           }} 
-          onClick={handleOpen}>
+          onClick={props.handleOpen}>
           <Typography
             sx={{ "& a": { textDecoration: "none", color: props.color } }}
           >
@@ -54,10 +50,6 @@ const Section: FC<SectionType> = (props) => {
       <Box flex={2} width="100%">
         <Box component="img" src={props.group} width="100%" />
       </Box>
-      <Confirm 
-        open={open}
-        handleClose={handleClose}
-      />
     </Stack>
   );
 };

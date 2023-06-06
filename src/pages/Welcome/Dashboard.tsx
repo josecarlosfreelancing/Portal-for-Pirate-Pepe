@@ -30,12 +30,12 @@ const Dashboard: FC = () => {
           backgroundPosition: 'top right',
           backgroundSize: 'cover',
           backgroundRepeat: "no-repeat",
-          pt: { xs: 8, lg: 12 },
+          pt: { xs: 8, lg: '6vw' },
           pb: 24,
         }}
       >
         <Box
-          maxWidth={1280}
+          maxWidth={{ md: 1280, lg: '70vw' }}
           position="relative"
           mx="auto"
           px={{ md: 13.5, sm: 2, xs: 2 }}
@@ -54,9 +54,28 @@ const Dashboard: FC = () => {
                 />
               </Box>
               <Box py={{ sm: 3, xs: 2 }}>
-                <Button variant="contained" color="success" onClick={login}>
-                  Connect Wallet
+                <Button
+                  variant="contained"
+                  color='warning'
+                  sx={{
+                    bgcolor: '#FFD53E',
+                    py: 2,
+                    px: { sm: 7, xs: 0 },
+                    width: { xs: '100%', sm: 'unset' },
+                    border: '1px solid #000'
+                  }}
+                  onClick={login}
+                >
+                  <Typography 
+                    variant="subtitle1"
+                    sx={{ 
+                      textTransform: 'uppercase' 
+                    }}
+                  >Connect Wallet</Typography>
                 </Button>
+                {/* <Button variant="contained" color="success">
+                  Connect Wallet
+                </Button> */}
               </Box>
             </Stack>
             <Typography

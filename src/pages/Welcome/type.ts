@@ -7,6 +7,8 @@ type SectionType = {
   highlight: string,
   content: string,
   reverse:  boolean,
+  handleOpen: any,
+  open:  boolean
 };
 
 export type { SectionType };
