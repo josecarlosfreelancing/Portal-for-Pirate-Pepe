@@ -74,7 +74,7 @@ const Dashboard: FC = () => {
                     sx={{ 
                       textTransform: 'uppercase' 
                     }}
-                  >{ account ? "Join Now" : "Connect Wallet" }</Typography>
+                  >{ account ? "Login" : "Connect Wallet" }</Typography>
                 </Button>
                 {/* <Button variant="contained" color="success">
                   Connect Wallet
