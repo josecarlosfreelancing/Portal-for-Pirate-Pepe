@@ -1,31 +1,45 @@
 import React, { FC, createContext } from "react";
 import { useWeb3React } from "@web3-react/core";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { injected } from "../connectors";
 import { app } from "../config/firebase";
 import { getDatabase, set, ref, onValue } from "firebase/database";
+import Confirm from "../components/Confirm";
 
 const initialState = {
   account: "",
   role: "",
+  open: false,
   login: () => {},
   logout: () => {},
+  handleOpen: () => {},
+  handleClose: () => {}
 };
 
 export const AuthContext = createContext(initialState);
 
 const AuthProvider: FC<any> = ({ children }: any) => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const { account, activate, deactivate } = useWeb3React();
+  const [open, setOpen] =  React.useState(false);
+
+  
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   const [user, setUser] = React.useState({
     account: "",
     role: "",
   });
 
   const login = async () => {
-    loadUser();
-    navigate("/home");
+    if (account) {
+      await loadUser();
+    } else {
+      await activateWeb3();
+    }
   };
 
   const loadUser = async () => {
@@ -34,21 +48,28 @@ const AuthProvider: FC<any> = ({ children }: any) => {
       const userRef = ref(database, "users/" + account);
       onValue(userRef, async (snapshot) => {
         const data = await snapshot.val();
-
-        if (!data) {
-          set(userRef, {
-            account,
-            role: "user",
-          })
-            .then(() => {
-              setUser({ account, role: "user" });
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        } else {
+        if (data) {
           setUser(data);
+          navigate('/home')
+        } else {
+          handleOpen()
         }
+
+        // if (!data) {
+        //   set(userRef, {
+        //     account,
+        //     role: "user",
+        //   })
+        //     .then(() => {
+        //       setUser({ account, role: "user" });
+        //     })
+        //     .catch((error) => {
+        //       console.log(error);
+        //     });
+        // } else {
+        //   setUser(data);
+        // }
+        // navigate("/home");
       });
     } else {
       await activateWeb3();
@@ -56,6 +77,7 @@ const AuthProvider: FC<any> = ({ children }: any) => {
   };
 
   const logout = async () => {
+    await deactivate()
     navigate("/");
   };
 
@@ -63,7 +85,6 @@ const AuthProvider: FC<any> = ({ children }: any) => {
     if (typeof (window as any)?.ethereum) {
       return true;
     }
-
     return false;
   };
 
@@ -77,26 +98,28 @@ const AuthProvider: FC<any> = ({ children }: any) => {
   };
 
   React.useEffect(() => {
-    if (!account) {
-      // activateWeb3();
-    } else if (!user?.account) {
-      loadUser();
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [account]);
+    if (!account && pathname != '/') {
+      navigate('/')
+      return;
+    } 
+  }, [account])
 
-  // React.useEffect(() => {
-  //   if (!user?.account) {
-  //     console.log("over here");
-  //     loadUser();
-  //   }
-  // }, [user]);
+  React.useEffect(() => {
+    if (account && user?.role == "user" && pathname.includes('admin')) {
+      navigate('/home')
+      return
+    }
+  }, [pathname])
+
   return (
     <AuthContext.Provider
       value={{
         ...user,
+        open,
         login,
         logout,
+        handleOpen,
+        handleClose,
       }}
     >
       {children}

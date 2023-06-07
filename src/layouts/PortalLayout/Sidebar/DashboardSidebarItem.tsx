@@ -27,12 +27,6 @@ export const DashboardSidebarItem = (props: any) => {
 
   const [open, setOpen] = useState(!!openProp);
 
-  console.log('pathname', pathname)
-  console.log('path', path)
-  console.log('openProp', !!openProp)
-  console.log('children', children)
-  console.log('-------------------------------------')
-
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
     navigate(path);
@@ -62,11 +56,6 @@ export const DashboardSidebarItem = (props: any) => {
         {...other}
       >
         <Button
-          // {...(Boolean(link) && {
-          //   component: Link,
-          //   href: "link",
-          // })}
-          // onClick={}
           endIcon={
             !open ? (
               <KeyboardArrowRight fontSize="small" />

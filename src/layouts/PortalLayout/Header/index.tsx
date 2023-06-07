@@ -127,16 +127,20 @@ export default function Header({
           }
         </Stack>
         <Stack alignItems="flex-end" flexDirection="row" gap={4}>
-          <Button
-            variant="contained"
-            color="success"
-            onClick={() => navigate("/admin/upload")}
-            sx={{
-              color: "text.primary",
-            }}
-          >
-            Admin Page
-          </Button>
+          { role === 'admin'
+          ?
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => navigate("/admin/upload")}
+              sx={{
+                color: "text.primary",
+              }}
+            >
+              Admin Page
+            </Button>
+          : <></>
+          }
           {/* <Button variant="contained">Connect Wallet</Button> */}
         </Stack>
       </Toolbar>

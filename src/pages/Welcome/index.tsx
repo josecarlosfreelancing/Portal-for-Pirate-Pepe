@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import Dashboard from "./Dashboard";
 import Section from "./Section";
@@ -8,12 +8,10 @@ import { SectionType } from "./type";
 import Subscribe from "./Subscribe";
 import Pirate from "./Pirate";
 import Confirm from "../../components/Confirm";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Welcome: FC = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
+  const { open, handleOpen, handleClose } = useContext(AuthContext);
   return (
     <Box>
       <Dashboard />

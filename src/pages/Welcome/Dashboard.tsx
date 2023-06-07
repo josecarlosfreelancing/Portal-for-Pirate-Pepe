@@ -1,9 +1,12 @@
 import React, { FC, useContext } from "react";
 import { Box, Typography, Stack, Button } from "@mui/material";
 import { AuthContext } from "../../providers/AuthProvider";
+import { useWeb3React } from "@web3-react/core";
 
 const Dashboard: FC = () => {
   const { login } = useContext(AuthContext);
+  const { account } = useWeb3React();
+
   return (
     <Box
       sx={{
@@ -71,7 +74,7 @@ const Dashboard: FC = () => {
                     sx={{ 
                       textTransform: 'uppercase' 
                     }}
-                  >Connect Wallet</Typography>
+                  >{ account ? "Join Now" : "Connect Wallet" }</Typography>
                 </Button>
                 {/* <Button variant="contained" color="success">
                   Connect Wallet
