@@ -8,12 +8,12 @@ export default function Updater() {
   const switchNetwork = useCallback(async () => {
     await library.provider.request({
       method: "wallet_switchEthereumChain",
-      params: [{ chainId: "0x" + goerliNetworkChainId.toString(16) }],
+      params: [{ chainId: "0x" + mainNetworkChainId.toString(16) }],
     });
   }, [library, chainId]);
 
   useEffect(() => {
-    if (active && chainId !== goerliNetworkChainId) {
+    if (active && chainId !== mainNetworkChainId) {
       switchNetwork();
     }
   }, [library, chainId, active]);
